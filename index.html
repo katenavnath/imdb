@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDb Clone - Movies, TV Shows and Celebrities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <header class="imdb-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo" id="homeLink">IMDb</a>
+                <span class="menu-toggle"><i class="fas fa-bars"></i></span>
+            </div>
+            
+            <div class="search-container">
+                <form class="search-form">
+                    <input type="text" placeholder="Search IMDb" class="search-input" id="searchInput">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+                <div id="searchResults" class="search-results"></div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../menu.html" id="menuLink"><i class="fas fa-bars"></i> Menu</a></li>
+                    <li><a href="index.html" id="homeNavLink"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../movies.html"><i class="fas fa-film"></i> Movies</a></li>
+                    <li><a href="../tvshow.html"><i class="fas fa-tv"></i> TV Shows</a></li>
+                    <li><a href="../celebrities.html" id="celebsNavLink"><i class="fas fa-star"></i> Celebrities</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-actions">
+                <a href="#" class="watchlist"><i class="fas fa-bookmark"></i> Watchlist</a>
+                <a href="login.html" class="sign-in" id="signInBtn">Sign In</a>
+                <a href="#" class="sign-out" id="signOutBtn" style="display: none;">Sign Out</a>
+                <div class="theme-toggle">
+                    <button id="themeToggleBtn"><i class="fas fa-moon"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Sections -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="homePage" class="page-content">
+            <section class="hero-section">
+                <div class="hero-video-container">
+                    <video autoplay muted loop class="hero-video" id="heroVideo">
+                        <source src="https://cdn.pixabay.com/video/2022/09/03/130133-746386389_tiny.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay"></div>
+                </div>
+                <div class="container hero-content">
+                    <h1>Discover Movies, TV Shows & Celebrities</h1>
+                    <p>Explore ratings, reviews, and recommendations from the world's largest collection of entertainment data</p>
+                    <a href="#" class="hero-button" id="exploreButton">Explore Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </section>
+
+            <div class="container">
+                <section class="trending-section" id="Movies">
+                    <div class="section-header">
+                        <h2 class="section-title">Top Rated Movies</h2>
+                        <a href="top-rated.html" class="view-all" id="topRatedLink">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <div class="trending-grid">
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg" alt="The Shawshank Redemption">
+                                <div class="rating"><i class="fas fa-star"></i> 9.3</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">The Shawshank Redemption</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">1994</span>
+                                    <span class="movie-type">Movie</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UY562_CR1,0,380,562_.jpg" alt="The Godfather">
+                                <div class="rating"><i class="fas fa-star"></i> 9.2</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">The Godfather</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">1972</span>
+                                    <span class="movie-type">Movie</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="The Dark Knight">
+                                <div class="rating"><i class="fas fa-star"></i> 9.0</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">The Dark Knight</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">2008</span>
+                                    <span class="movie-type">Movie</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_QL75_UX380_CR0,1,380,562_.jpg" alt="12 Angry Men">
+                                <div class="rating"><i class="fas fa-star"></i> 8.9</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">12 Angry Men</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">1957</span>
+                                    <span class="movie-type">Movie</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="The Lord of the Rings: The Return of the King">
+                                <div class="rating"><i class="fas fa-star"></i> 8.9</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">The Lord of the Rings: The Return of the King</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">2003</span>
+                                    <span class="movie-type">Movie</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="news-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Latest News</h2>
+                        <a href="news.html" class="view-all" id="newsLink">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <div class="news-grid">
+                        <div class="news-card">
+                            <div class="news-image">
+                                <img src="https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_QL75_UX380_CR0,0,380,214_.jpg" alt="New Movie Releases">
+                            </div>
+                            <div class="news-content">
+                                <span class="news-date">June 15, 2023</span>
+                                <h3 class="news-title">Summer Blockbusters: The Most Anticipated Movies of 2023</h3>
+                                <p class="news-excerpt">From superhero epics to animated adventures, discover the biggest movies hitting theaters this summer season.</p>
+                                <a href="#" class="read-more">Read More <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="news-card">
+                            <div class="news-image">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMTU4Mjg1OTY5N15BMl5BanBnXkFtZTgwNzM3MDMyNjM@._V1_QL75_UX380_CR0,0,380,214_.jpg" alt="Celebrity Interviews">
+                            </div>
+                            <div class="news-content">
+                                <span class="news-date">June 12, 2023</span>
+                                <h3 class="news-title">Exclusive Interview with Award-Winning Director Christopher Nolan</h3>
+                                <p class="news-excerpt">The acclaimed filmmaker discusses his latest project, creative process, and the future of cinema.</p>
+                                <a href="#" class="read-more">Read More <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="celebrities-section" id="Celebrities">
+                    <div class="section-header">
+                        <h2 class="section-title">Popular Celebrities</h2>
+                        <a href="celebrities.html" class="view-all" id="celebsLink">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <div class="celebrities-grid">
+                        <div class="celebrity-card">
+                            <div class="celebrity-image">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMTkxNzI3ODI4Nl5BMl5BanBnXkFtZTcwMjkwMjYzMw@@._V1_QL75_UX214_CR0,0,214,317_.jpg" alt="Leonardo DiCaprio">
+                            </div>
+                            <h3 class="celebrity-name">Leonardo DiCaprio</h3>
+                            <p class="celebrity-role">Actor, Producer</p>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-image">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMTQ2MjMwNDA3Nl5BMl5BanBnXkFtZTcwMTA2NDY3NQ@@._V1_QL75_UY317_CR2,0,214,317_.jpg" alt="Meryl Streep">
+                            </div>
+                            <h3 class="celebrity-name">Meryl Streep</h3>
+                            <p class="celebrity-role">Actress</p>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-image">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMTk1MjM3NTU5M15BMl5BanBnXkFtZTcwMTMyMjAyMg@@._V1_QL75_UX214_CR0,0,214,317_.jpg" alt="Tom Hanks">
+                            </div>
+                            <h3 class="celebrity-name">Tom Hanks</h3>
+                            <p class="celebrity-role">Actor, Producer</p>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-image">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMTY5NzE3NzU3MF5BMl5BanBnXkFtZTgwMjg0NTQ5MDE@._V1_QL75_UX214_CR0,0,214,317_.jpg" alt="Viola Davis">
+                            </div>
+                            <h3 class="celebrity-name">Viola Davis</h3>
+                            <p class="celebrity-role">Actress, Producer</p>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-image">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMTU4MjU0NjI4NF5BMl5BanBnXkFtZTgwNjU3NTUzMDI@._V1_QL75_UY317_CR7,0,214,317_.jpg" alt="Denzel Washington">
+                            </div>
+                            <h3 class="celebrity-name">Denzel Washington</h3>
+                            <p class="celebrity-role">Actor, Director</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="coming-soon-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Coming Soon to Theaters</h2>
+                        <a href="calendar.html" class="view-all" id="comingSoonLink">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <div class="coming-soon-grid">
+                        <div class="coming-soon-card">
+                            <div class="coming-soon-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Indiana Jones and the Dial of Destiny">
+                                <div class="release-date">June 30, 2023</div>
+                            </div>
+                            <div class="coming-soon-info">
+                                <h3 class="coming-soon-title">Indiana Jones and the Dial of Destiny</h3>
+                                <p class="coming-soon-genres">Action, Adventure</p>
+                                <a href="#" class="watch-trailer" data-trailer="https://www.youtube.com/embed/eQfMbSe7F2g">Watch Trailer</a>
+                            </div>
+                        </div>
+                        
+                        <div class="coming-soon-card">
+                            <div class="coming-soon-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BMDk4MTdhYzEtODk3OS00ZDBjLWFhNTQtMDI2ODdjNzQzZTA3XkEyXkFqcGdeQXVyMjMxOTE0ODA@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Mission: Impossible - Dead Reckoning Part One">
+                                <div class="release-date">July 12, 2023</div>
+                            </div>
+                            <div class="coming-soon-info">
+                                <h3 class="coming-soon-title">Mission: Impossible - Dead Reckoning Part One</h3>
+                                <p class="coming-soon-genres">Action, Adventure, Thriller</p>
+                                <a href="#" class="watch-trailer" data-trailer="https://www.youtube.com/embed/avz06PDqDbM">Watch Trailer</a>
+                            </div>
+                        </div>
+                        
+                        <div class="coming-soon-card">
+                            <div class="coming-soon-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BNjcxYjg0OWItNDRkYi00YzVkLWI5NzMtMmY3MzJmYzY3YzFkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Oppenheimer">
+                                <div class="release-date">July 21, 2023</div>
+                            </div>
+                            <div class="coming-soon-info">
+                                <h3 class="coming-soon-title">Oppenheimer</h3>
+                                <p class="coming-soon-genres">Biography, Drama, History</p>
+                                <a href="#" class="watch-trailer" data-trailer="https://www.youtube.com/embed/uYPbbksJxIg">Watch Trailer</a>
+                            </div>
+                        </div>
+                        
+                        <div class="coming-soon-card">
+                            <div class="coming-soon-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BNGE4NzM1ODAtN2Y3ZS00YjFmLTlkZjUtNWY1MWQwOWM1NzQwXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Barbie">
+                                <div class="release-date">July 21, 2023</div>
+                            </div>
+                            <div class="coming-soon-info">
+                                <h3 class="coming-soon-title">Barbie</h3>
+                                <p class="coming-soon-genres">Adventure, Comedy, Fantasy</p>
+                                <a href="#" class="watch-trailer" data-trailer="https://www.youtube.com/embed/8zIf0XvoL9Y">Watch Trailer</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <section class="newsletter-section">
+                <div class="container newsletter-container">
+                    <div class="newsletter-content">
+                        <h2 class="newsletter-title">Stay Updated with IMDb</h2>
+                        <p class="newsletter-text">Subscribe to our newsletter to receive the latest movie news, reviews, and recommendations directly to your inbox.</p>
+                    </div>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-submit">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+            
+            <div class="container">
+                <section class="trending-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Popular TV Shows</h2>
+                        <a href="tvshow.html" class="view-all" id="tvShowsLink">View All <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    
+                    <div class="trending-grid">
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00OGQ4LWE3OGYtNDdiMzNiNDZlMDAwXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_QL75_UX380_CR0,4,380,562_.jpg" alt="Game of Thrones">
+                                <div class="rating"><i class="fas fa-star"></i> 9.2</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">Game of Thrones</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">2011-2019</span>
+                                    <span class="movie-type">TV Series</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BN2IzYzBiOTQtNGZmMi00NDI5LTgxMzMtN2EzZjA1NjhlOGMxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,1,380,562_.jpg" alt="Breaking Bad">
+                                <div class="rating"><i class="fas fa-star"></i> 9.5</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">Breaking Bad</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">2008-2013</span>
+                                    <span class="movie-type">TV Series</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Stranger Things">
+                                <div class="rating"><i class="fas fa-star"></i> 8.7</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">Stranger Things</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">2016-Present</span>
+                                    <span class="movie-type">TV Series</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BZGJjYzhjYTYtMDBjYy00OWU1LTg5OTYtNmYwOTZmZjE3ZDdhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_QL75_UY562_CR5,0,380,562_.jpg" alt="The Last of Us">
+                                <div class="rating"><i class="fas fa-star"></i> 8.9</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">The Last of Us</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">2023-Present</span>
+                                    <span class="movie-type">TV Series</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="movie-card">
+                            <div class="movie-poster">
+                                <img src="https://m.media-amazon.com/images/M/MV5BZWQ4MjA2YzEtOTQzYi00NmQ0LTliYjQtN2FmY2E2YzgwYWY5XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="The Mandalorian">
+                                <div class="rating"><i class="fas fa-star"></i> 8.7</div>
+                            </div>
+                            <div class="movie-info">
+                                <h3 class="movie-title">The Mandalorian</h3>
+                                <div class="movie-meta">
+                                    <span class="movie-year">2019-Present</span>
+                                    <span class="movie-type">TV Series</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Trailer Modal -->
+    <div id="trailerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="trailer-container">
+                <iframe id="trailerFrame" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="imdb-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Sign in for more access</h3>
+                <p>Get personalized recommendations, updates and more.</p>
+                <a href="login.html" class="sign-in-button">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow IMDb</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+                <ul>
+                    <li><a href="#"><i class="fas fa-thumbs-up"></i> Like us on Facebook</a></li>
+                    <li><a href="#"><i class="fas fa-hashtag"></i> Follow us on Twitter</a></li>
+                    <li><a href="#"><i class="fas fa-camera"></i> Follow us on Instagram</a></li>
+                    <li><a href="#"><i class="fas fa-play"></i> Subscribe on YouTube</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section qr-container">
+                <h3>Get the IMDb app</h3>
+                <div class="qr-code">
+                    <span>Scan Me</span>
+                </div>
+                <p>Available on iOS and Android</p>
+                <div class="app-stores">
+                    <div class="app-store">
+                        <i class="fab fa-apple"></i> App Store
+                    </div>
+                    <div class="app-store">
+                        <i class="fab fa-google-play"></i> Play Store
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>IMDb Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                    <li><a href="#"><i class="fas fa-sitemap"></i> Site Index</a></li>
+                    <li><a href="#"><i class="fas fa-crown"></i> IMDbPro</a></li>
+                    <li><a href="#"><i class="fas fa-ticket-alt"></i> Box Office Mojo</a></li>
+                    <li><a href="#"><i class="fas fa-newspaper"></i> Press Room</a></li>
+                    <li><a href="#"><i class="fas fa-ad"></i> Advertising</a></li>
+                    <li><a href="#"><i class="fas fa-briefcase"></i> Jobs</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <a href="#"><i class="fas fa-file-contract"></i> Conditions of Use</a>
+            <a href="#"><i class="fas fa-user-shield"></i> Privacy Policy</a>
+            <a href="#"><i class="fas fa-ad"></i> Interest-Based Ads</a>
+            <span class="copyright">© 1990-2023 by IMDb.com, Inc.</span>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
