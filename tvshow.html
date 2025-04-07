@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Shows Hub</title>
+    <style>
+
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #fff;
+            padding: 20px;
+            text-align: left;
+            font-size: 20px;
+            border-bottom: 2px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .news-article {
+            flex: 3;
+            min-width: 0;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .news-article img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .more-news {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .top-news ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .top-news ul li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .top-news ul li:last-child {
+            border-bottom: none;
+        }
+
+        .top-news ul li img {
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .top-news ul li a {
+            text-decoration: none;
+            color: #0073e6;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .top-news h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #222;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 20px 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+            }
+            
+            .news-article, .more-news {
+                flex: 1 1 100%;
+            }
+            
+            .more-news {
+                order: -1;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 15px 10px;
+                font-size: 18px;
+            }
+            
+            .news-article, .more-news {
+                padding: 15px;
+            }
+            
+            .top-news ul li {
+                flex-direction: column;
+            }
+            
+            .top-news ul li img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .top-news ul li {
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+            }
+            
+            .news-article, .more-news {
+                padding: 10px;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+      
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tv-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e6e6e6;
+        }
+        
+        .tv-nav-btn {
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .tv-nav-btn:hover, .tv-nav-btn.active {
+            background-color: #f5c518;
+            color: #000;
+        }
+        
+        .section {
+            display: none;
+            margin-bottom: 40px;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0c4b33;
+            color: #0c4b33;
+        }
+        
+        /* Top Rated List Styles */
+        .top-rated-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .top-rated-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .rank {
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 30px;
+            text-align: center;
+            color: #0c4b33;
+        }
+        
+        .poster-small {
+            width: 50px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+        
+        .show-info {
+            flex-grow: 1;
+        }
+        
+        .title-line {
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+        
+        .title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .year {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .rating-line {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .star-icon {
+            color: #f5c518;
+        }
+        
+        .rating {
+            font-weight: bold;
+        }
+        
+        .rating-count {
+            color: #666;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        /* Original Grid Styles (for other sections) */
+        .tv-show-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .tv-show-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .tv-show-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tv-show-poster {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .tv-show-details {
+            padding: 15px;
+        }
+        
+        .tv-show-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .tv-show-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .genre-card {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .genre-card:hover {
+            background-color: #0c4b33;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .news-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #0c4b33;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .genre-shows {
+            display: none;
+        }
+        
+        .genre-shows.active {
+            display: block;
+        }
+        
+        .back-to-genres {
+            display: block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #0c4b33;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .tv-show-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .tv-show-poster {
+                height: 220px;
+            }
+            
+            .genre-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        .header {
+      background-color: #0F171E;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00A8E1;
+    }
+    
+    .nav {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .nav a:hover {
+      color: #00A8E1;
+    }
+    
+    .search-bar {
+      display: flex;
+      align-items: center;
+    }
+    
+    .search-bar input {
+      padding: 8px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      min-width: 200px;
+    }
+    
+    .search-bar button {
+      padding: 8px 12px;
+      background-color: #00A8E1;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      color: white;
+      cursor: pointer;
+    }
+    
+    /* Menu Styles */
+    .menu {
+      background-color: #1A242F;
+      padding: 10px 20px;
+      position: sticky;
+      top: 60px;
+      z-index: 99;
+    }
+    
+    .menu ul {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+    }
+    
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .menu a.active {
+      color: #00A8E1;
+      font-weight: bold;
+    }
+    
+    .menu a:hover {
+      color: #00A8E1;
+    }
+
+    :root {
+    --imdb-yellow: #f5c518;
+    --imdb-dark-blue: #0c2340;
+    --imdb-light-blue: #1a3d6d;
+    --imdb-gray: #e6e6e6;
+    --imdb-dark-gray: #757575;
+    --imdb-black: #000000;
+    --imdb-white: #ffffff;
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Amazon Ember', Arial, sans-serif;
+    background-color: var(--imdb-white);
+    color: var(--imdb-black);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.imdb-header {
+    background-color: var(--imdb-dark-blue);
+    color: var(--imdb-white);
+    padding: 1px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--imdb-yellow);
+    margin-right: 25px;
+    letter-spacing: -1px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 22px;
+    cursor: pointer;
+    margin-right: 15px;
+    color: var(--imdb-white);
+}
+
+.main-nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav li {
+    margin-right: 20px;
+    position: relative;
+}
+
+.main-nav a {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 300;
+    padding: 8px 0;
+}
+
+.main-nav a:hover {
+    color: var(--imdb-yellow);
+}
+
+.main-nav i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.search-container {
+    flex-grow: 1;
+    margin: 0 30px;
+    position: relative;
+}
+
+.search-form {
+    display: flex;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    background-color: var(--imdb-white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--imdb-yellow);
+}
+
+.search-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: var(--imdb-yellow);
+    color: var(--imdb-black);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #e6b800;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.watchlist {
+    margin-right: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.watchlist i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.sign-in {
+    background-color: transparent;
+    border: 1px solid var(--imdb-white);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.sign-in:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--imdb-yellow);
+    color: var(--imdb-yellow);
+}
+
+.theme-toggle {
+    margin-left: 20px;
+}
+
+#themeToggleBtn {
+    background: transparent;
+    border: none;
+    color: var(--imdb-white);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#themeToggleBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--imdb-yellow);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--imdb-dark-blue);
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+    
+    .main-nav.active {
+        display: block;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+    }
+    
+    .main-nav li {
+        margin: 0 0 15px 0;
+    }
+    
+    .search-container {
+        order: 3;
+        width: 100%;
+        margin: 15px 0 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .user-actions {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    .watchlist {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+         <header class="imdb-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="#" class="logo" id="homeLink">IMDb</a>
+                <span class="menu-toggle"><i class="fas fa-bars"></i></span>
+            </div>
+            
+            <div class="search-container">
+                <form class="search-form">
+                    <input type="text" placeholder="Search IMDb" class="search-input">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="menu.html" id="menuLink"><i class="fas fa-bars"></i> Menu</a></li>
+                    <li><a href="./main/index.html" id="homeNavLink"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="movies.html"><i class="fas fa-film"></i> Movies</a></li>
+                    <li><a href="tvshow.html"><i class="fas fa-tv"></i> TV Shows</a></li>
+                    <li><a href="#" id="celebsNavLink"><i class="fas fa-star"></i> Celebrities</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-actions">
+                <a href="#" class="watchlist"><i class="fas fa-bookmark"></i> Watchlist</a>
+                <a href="login.html" class="sign-in" id="signInBtn">Sign In</a>
+                <a href="#" class="sign-out" id="signOutBtn" style="display: none;">Sign Out</a>
+                <div class="theme-toggle">
+                    <button id="themeToggleBtn"><i class="fas fa-moon"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+        
+        <!-- Navigation -->
+        <div class="tv-nav">
+            <button class="tv-nav-btn active" onclick="showSection('top-rated')">Top Rated TV Shows</button>
+            <button class="tv-nav-btn" onclick="showSection('popular')">Most Popular TV Shows</button>
+            <button class="tv-nav-btn" onclick="showSection('genres')">Browse TV Shows by Genre</button>
+            <button class="tv-nav-btn" onclick="showSection('news')">TV News</button>
+        </div>
+        
+        <!-- Top Rated TV Shows Section -->
+        <div id="top-rated" class="section active">
+            <h2 class="section-title">Top Rated TV Shows</h2>
+            <div class="top-rated-list">
+                <!-- TV Show 1 -->
+                <div class="top-rated-item">
+                    <span class="rank">1</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg" alt="Breaking Bad" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Breaking Bad</span>
+                            <span class="year">(2008-2013)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.5</span>
+                            <span class="rating-count">1,900,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 2 -->
+                <div class="top-rated-item">
+                    <span class="rank">2</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_QL75_UY562_CR7,0,380,562_.jpg" alt="Game of Thrones" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Game of Thrones</span>
+                            <span class="year">(2011-2019)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.2</span>
+                            <span class="rating-count">2,200,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 3 -->
+                <div class="top-rated-item">
+                    <span class="rank">3</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZmY5ZDMxODEtNWIwOS00NjdkLThkMTctNzFiOTM0NGIxZjI2XkEyXkFqcGdeQXVyNTA3MTU2MjE@._V1_QL75_UY562_CR5,0,380,562_.jpg" alt="Planet Earth II" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Planet Earth II</span>
+                            <span class="year">(2016)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.4</span>
+                            <span class="rating-count">150,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 4 -->
+                <div class="top-rated-item">
+                    <span class="rank">4</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_QL75_UY562_CR6,0,380,562_.jpg" alt="The Wire" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">The Wire</span>
+                            <span class="year">(2002-2008)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.3</span>
+                            <span class="rating-count">350,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 5 -->
+                <div class="top-rated-item">
+                    <span class="rank">5</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTY5NjI2MjQxMl5BMl5BanBnXkFtZTcwMDE5NjI2Nw@@._V1_QL75_UY562_CR2,0,380,562_.jpg" alt="The Sopranos" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">The Sopranos</span>
+                            <span class="year">(1999-2007)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.2</span>
+                            <span class="rating-count">400,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 6 -->
+                <div class="top-rated-item">
+                    <span class="rank">6</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDg3MDE0ODAwN15BMl5BanBnXkFtZTgwNzE2MDU1NTM@._V1_QL75_UY562_CR35,0,380,562_.jpg" alt="Stranger Things" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Stranger Things</span>
+                            <span class="year">(2016-2025)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">8.7</span>
+                            <span class="rating-count">1,100,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 7 -->
+                <div class="top-rated-item">
+                    <span class="rank">7</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjZlZDlkYTktMmU1My00ZDBiLWFlNjEtYTBhNjVhOTM4ZjJjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="The Office (US)" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">The Office (US)</span>
+                            <span class="year">(2005-2013)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.0</span>
+                            <span class="rating-count">600,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 8 -->
+                <div class="top-rated-item">
+                    <span class="rank">8</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjEzMDAxOTUyMV5BMl5BanBnXkFtZTgwNzAxMzYzOTE@._V1_QL75_UY562_CR6,0,380,562_.jpg" alt="Rick and Morty" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Rick and Morty</span>
+                            <span class="year">(2013-)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.1</span>
+                            <span class="rating-count">550,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 9 -->
+                <div class="top-rated-item">
+                    <span class="rank">9</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTI3ODc2ODc0M15BMl5BanBnXkFtZTYwMjgzNjc3._V1_QL75_UY562_CR0,0,380,562_.jpg" alt="Band of Brothers" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Band of Brothers</span>
+                            <span class="year">(2001)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.4</span>
+                            <span class="rating-count">450,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 10 -->
+                <div class="top-rated-item">
+                    <span class="rank">10</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UY562_CR0,0,380,562_.jpg" alt="Interstellar" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Interstellar</span>
+                            <span class="year">(2014)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">8.6</span>
+                            <span class="rating-count">1,800,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-rated-item">
+                    <span class="rank">11</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg" alt="Breaking Bad" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Breaking Bad</span>
+                            <span class="year">(2008-2013)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.5</span>
+                            <span class="rating-count">1,900,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 2 -->
+                <div class="top-rated-item">
+                    <span class="rank">12</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_QL75_UY562_CR7,0,380,562_.jpg" alt="Game of Thrones" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Game of Thrones</span>
+                            <span class="year">(2011-2019)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.2</span>
+                            <span class="rating-count">2,200,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 3 -->
+                <div class="top-rated-item">
+                    <span class="rank">13</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZmY5ZDMxODEtNWIwOS00NjdkLThkMTctNzFiOTM0NGIxZjI2XkEyXkFqcGdeQXVyNTA3MTU2MjE@._V1_QL75_UY562_CR5,0,380,562_.jpg" alt="Planet Earth II" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Planet Earth II</span>
+                            <span class="year">(2016)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.4</span>
+                            <span class="rating-count">150,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 4 -->
+                <div class="top-rated-item">
+                    <span class="rank">14</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_QL75_UY562_CR6,0,380,562_.jpg" alt="The Wire" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">The Wire</span>
+                            <span class="year">(2002-2008)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.3</span>
+                            <span class="rating-count">350,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 5 -->
+                <div class="top-rated-item">
+                    <span class="rank">15</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTY5NjI2MjQxMl5BMl5BanBnXkFtZTcwMDE5NjI2Nw@@._V1_QL75_UY562_CR2,0,380,562_.jpg" alt="The Sopranos" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">The Sopranos</span>
+                            <span class="year">(1999-2007)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.2</span>
+                            <span class="rating-count">400,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 6 -->
+                <div class="top-rated-item">
+                    <span class="rank">16</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDg3MDE0ODAwN15BMl5BanBnXkFtZTgwNzE2MDU1NTM@._V1_QL75_UY562_CR35,0,380,562_.jpg" alt="Stranger Things" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Stranger Things</span>
+                            <span class="year">(2016-2025)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">8.7</span>
+                            <span class="rating-count">1,100,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 7 -->
+                <div class="top-rated-item">
+                    <span class="rank">17</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjZlZDlkYTktMmU1My00ZDBiLWFlNjEtYTBhNjVhOTM4ZjJjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="The Office (US)" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">The Office (US)</span>
+                            <span class="year">(2005-2013)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.0</span>
+                            <span class="rating-count">600,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 8 -->
+                <div class="top-rated-item">
+                    <span class="rank">18</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjEzMDAxOTUyMV5BMl5BanBnXkFtZTgwNzAxMzYzOTE@._V1_QL75_UY562_CR6,0,380,562_.jpg" alt="Rick and Morty" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Rick and Morty</span>
+                            <span class="year">(2013-)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.1</span>
+                            <span class="rating-count">550,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 9 -->
+                <div class="top-rated-item">
+                    <span class="rank">19</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTI3ODc2ODc0M15BMl5BanBnXkFtZTYwMjgzNjc3._V1_QL75_UY562_CR0,0,380,562_.jpg" alt="Band of Brothers" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Band of Brothers</span>
+                            <span class="year">(2001)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">9.4</span>
+                            <span class="rating-count">450,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 10 -->
+                <div class="top-rated-item">
+                    <span class="rank">20</span>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UY562_CR0,0,380,562_.jpg" alt="Interstellar" class="poster-small">
+                    <div class="show-info">
+                        <div class="title-line">
+                            <span class="title">Interstellar</span>
+                            <span class="year">(2014)</span>
+                        </div>
+                        <div class="rating-line">
+                            <span class="star-icon">★</span>
+                            <span class="rating">8.6</span>
+                            <span class="rating-count">1,800,000 votes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add more shows following the same pattern -->
+            </div>
+        </div>
+        
+        <!-- Most Popular TV Shows Section -->
+        <div id="popular" class="section">
+            <h2 class="section-title">Most Popular TV Shows</h2>
+            <div class="tv-show-grid">
+                <!-- TV Show 1 -->
+                <div class="tv-show-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BODBjOTAzZGItNDVkNS00YjM4LWFmY2MtZTNhY2QyMWE1M2U0XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_QL75_UY562_CR95,0,380,562_.jpg" alt="The Last of Us" class="tv-show-poster">
+                    <div class="tv-show-details">
+                        <div class="tv-show-title">The Last of Us</div>
+                        <div class="tv-show-meta">
+                            <span>2023-</span>
+                            <span class="tv-show-rating"><span class="star-icon">★</span> 8.8</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 2 -->
+                <div class="tv-show-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="Spider-Man: Freshman Year" class="tv-show-poster">
+                    <div class="tv-show-details">
+                        <div class="tv-show-title">Spider-Man: Freshman Year</div>
+                        <div class="tv-show-meta">
+                            <span>2024-</span>
+                            <span class="tv-show-rating"><span class="star-icon">★</span> -</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 3 -->
+                <div class="tv-show-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_QL75_UY562_CR2,0,380,562_.jpg" alt="Avatar: The Last Airbender" class="tv-show-poster">
+                    <div class="tv-show-details">
+                        <div class="tv-show-title">Avatar: The Last Airbender</div>
+                        <div class="tv-show-meta">
+                            <span>2024-</span>
+                            <span class="tv-show-rating"><span class="star-icon">★</span> 7.7</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 4 -->
+                <div class="tv-show-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BODkxNGQ1NWYtNzg0Ny00Yjg3LThmZTItMjE2YjhmZTQ0ODY5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,12,380,562_.jpg" alt="Friends" class="tv-show-poster">
+                    <div class="tv-show-details">
+                        <div class="tv-show-title">Friends</div>
+                        <div class="tv-show-meta">
+                            <span>1994-2004</span>
+                            <span class="tv-show-rating"><span class="star-icon">★</span> 8.9</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 5 -->
+                <div class="tv-show-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UY562_CR1,0,380,562_.jpg" alt="The Lord of the Rings: The Rings of Power" class="tv-show-poster">
+                    <div class="tv-show-details">
+                        <div class="tv-show-title">The Rings of Power</div>
+                        <div class="tv-show-meta">
+                            <span>2022-</span>
+                            <span class="tv-show-rating"><span class="star-icon">★</span> 6.9</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TV Show 6 -->
+                <div class="tv-show-card">
+                    <img src="https://m.media-amazon.com/images/M/MV5BODZlYzc2ODYtYmQyNy00YjMwLWFiZDMtZTA1MmFhYmUwY2I3XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg" alt="The Boys" class="tv-show-poster">
+                    <div class="tv-show-details">
+                        <div class="tv-show-title">The Boys</div>
+                        <div class="tv-show-meta">
+                            <span>2019-</span>
+                            <span class="tv-show-rating"><span class="star-icon">★</span> 8.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Browse by Genre Section -->
+        <div id="genres" class="section">
+            <h2 class="section-title">Browse TV Shows by Genre</h2>
+            <div class="genre-grid" id="genre-list">
+                <div class="genre-card" onclick="showGenreShows('action')">Action</div>
+                <div class="genre-card" onclick="showGenreShows('adventure')">Adventure</div>
+                <div class="genre-card" onclick="showGenreShows('animation')">Animation</div>
+                <div class="genre-card" onclick="showGenreShows('comedy')">Comedy</div>
+                <div class="genre-card" onclick="showGenreShows('crime')">Crime</div>
+                <div class="genre-card" onclick="showGenreShows('documentary')">Documentary</div>
+                <div class="genre-card" onclick="showGenreShows('drama')">Drama</div>
+                <div class="genre-card" onclick="showGenreShows('family')">Family</div>
+                <div class="genre-card" onclick="showGenreShows('fantasy')">Fantasy</div>
+                <div class="genre-card" onclick="showGenreShows('history')">History</div>
+                <div class="genre-card" onclick="showGenreShows('horror')">Horror</div>
+                <div class="genre-card" onclick="showGenreShows('mystery')">Mystery</div>
+                <div class="genre-card" onclick="showGenreShows('romance')">Romance</div>
+                <div class="genre-card" onclick="showGenreShows('sci-fi')">Sci-Fi</div>
+                <div class="genre-card" onclick="showGenreShows('thriller')">Thriller</div>
+                <div class="genre-card" onclick="showGenreShows('war')">War</div>
+            </div>
+            
+            <!-- Genre-specific shows will be displayed here -->
+            <div id="genre-shows-container"></div>
+        </div>
+        
+        <!-- TV News Section -->
+       <div id="news" class="section">
+            <h2 class="section-title">TV News</h2>
+            <!--  <div class="news-item">
+                <h3 class="news-title">'Stranger Things' Final Season Gets Release Window</h3>
+                <div class="news-date">March 15, 2024</div>
+                <p class="news-excerpt">Netflix has announced that the fifth and final season of Stranger Things will premiere in summer 2025, wrapping up the beloved sci-fi horror series that premiered in 2016. The Duffer Brothers have promised an epic conclusion to the story.</p>
+            </div>
+            
+            <div class="news-item">
+                <h3 class="news-title">HBO Renews 'House of the Dragon' for Third Season</h3>
+                <div class="news-date">March 10, 2024</div>
+                <p class="news-excerpt">Following the success of its second season, HBO has officially renewed the Game of Thrones prequel for a third season, with production to begin later this year. The show continues the Targaryen civil war known as the "Dance of the Dragons."</p>
+            </div>
+            
+            <div class="news-item">
+                <h3 class="news-title">New Trailer Released for 'The Last of Us' Season 2</h3>
+                <div class="news-date">March 5, 2024</div>
+                <p class="news-excerpt">HBO has dropped the first teaser trailer for the highly anticipated second season of its hit video game adaptation, set to premiere in early 2025. The trailer introduces new characters and hints at the darker tone of the upcoming season.</p>
+            </div>
+            
+            <div class="news-item">
+                <h3 class="news-title">'The Bear' Season 3 to Premiere in June</h3>
+                <div class="news-date">February 28, 2024</div>
+                <p class="news-excerpt">FX has announced that the third season of the critically acclaimed series 'The Bear' will premiere in June 2024. The show follows chef Carmy Berzatto as he navigates the challenges of running a Chicago sandwich shop.</p>
+            </div>-->
+        
+        <div class="container">
+            <main>
+                <section id="tv-news" class="news-article">
+                    <h2>‘Stranger Things’ Play ‘The First Shadow’ Getting Netflix Behind-the-Scenes Doc as Broadway Previews Begin</h2>
+                    <img src="https://s.yimg.com/ny/api/res/1.2/lonritRnqKsfUp5O14TIlA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/en/deadline.com/3eeaece439ac409e3480284e9be75b76" alt="Stranger Things play">
+                    <p>On the day of the first preview performance of "Stranger Things: The First Shadow" on Broadway, Netflix has announced a new documentary charting the TV phenomenon's successful adaptation into a hit stage play.<br><br>
+                    "Behind the Curtain: Stranger Things: The First Shadow" — set to premiere on April 15 on the streamer — is billed as "electrifying look backstage" at the making of the play before it launched in London's West End in December 2023.
+                    </p>
+                    <hr>
+    
+                    <h2>Oscar Isaac to Play Conman Juan Carlos Guzmán in ‘Stowaway’ Series for Apple TV+ (Exclusive)</h2>
+                    <img src="https://m.media-amazon.com/images/M/MV5BNjRkNTZmODUtZmI0Ni00OTg0LWFkMWItNWQ4OGE1YWIwMTc3XkEyXkFqcGc@.V1_QL75_UX500_CR0,26,500,281.jpg" alt="Oscar Isaac">
+                    <p>Oscar Isaac is set to executive produce and star in "Stowaway," playing Juan Carlos Guzmán, who is internationally recognized as the "greatest conman alive."<br><br>
+                    Apple TV+ closed a deal for the rights to the developing project following a competitive situation. Steven Levenson is attached to develop the series, set against a glittering backdrop of wealth and opulence, with the pilot directed by Alfonso Gomez-Rejon.</p>
+                    <hr>
+    
+                    <h2>‘Adolescence’ Duo Stephen Graham and Hannah Walters on the ‘Possibility’ of Season 2, ‘Overwhelming’ Global Response and What’s Next for Their Company</h2>
+                    <img src="https://m.media-amazon.com/images/M/MV5BNjI1YWUyN2EtNTdlNi00MjllLWJhMGQtNWZlNWUwMDU0ZWExXkEyXkFqcGc@.V1_QL75_UX500_CR0,26,500,281.jpg" alt="Stephen Graham and Hannah Walters">
+                    <p>Shortly before "Adolescence" launched on Netflix, Stephen Graham turned to Hannah Walters, his wife, producing partner and regular on-screen co-star and said: "Oh God, love, I haven't got a job!" <br><br>
+                    She was quick to console him. <br><br>
+                    "I think you're gonna be alright — but don't worry, have a bit of time off."</p>
+                    <hr>
+    
+                    <h2>Carlos Watson Says Trump Has Commuted His Prison Sentence for Ozy Media Fraud</h2>
+                    <img src="https://fortune.com/img-assets/wp-content/uploads/2023/02/GettyImages-1055363410-e1677170028887.jpg?resize=1200,600" alt="Carlos Watson">
+                    <p>Carlos Watson and his supporters are asserting that President Donald Trump has commuted the nearly 10-year prison sentence that he received after being convicted of extensive fraud in operating his digital media startup Ozy Media. <br><br>
+                    In a lengthy statement, Watson thanked Trump and reiterated that he had been targeted for prosecution by competitors.</p>
+                    <hr>
+    
+                    <h2>Disney Branded TV and Nat Geo Marketing Chief Pam Levine Exits Amid Restructuring</h2>
+                    <img src="https://m.media-amazon.com/images/M/MV5BYmFiNDk5ZjQtNzJhNS00YTg0LThhZmUtM2Y4MThmNDAyNjAyXkEyXkFqcGc@.V1.jpg" alt="Pam Levine">
+                    <p>Disney Branded Television and National Geographic head of marketing Pam Levine is exiting her role at the company as it restructures to move her responsibilities under Disney Entertainment Television president of marketing Shannon Ryan's team. <br><br>
+                    Levine reported directly to Ryan. Her notable campaigns included Disney Branded Television's "Percy Jackson & the Olympians" and the "Descendants" franchise, along with National Geographic's "Sugarcane" and "David Blaine: Do Not Attempt."</p>
+                    <hr>
+    
+                    <h2>Street Fighter IV: Champion Edition Everything Guide</h2>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMzM0OGNiOTctOTgyZC00YTE3LWE2OGYtODBhNWQ2NzEzODNhXkEyXkFqcGc@.V1_QL75_UX500_CR0,0,500,281.jpg" alt="Street Fighter">
+                    <p>Almost 40 years after Capcom's Street Fighter became a quarter-munching knockout in arcades, the legendary fighting-game franchise enters the Netflix arena. Free to subscribers, the acclaimed Street Fighter IV: Champion Edition puts all the fast-paced, face-pummeling, pugilistic action in the palm of your hand. <br><br>
+                    Updated and optimized for mobile devices, the bare-knuckle combat classic is a full-featured, content-stacked offering with a brimming roster of battlers, multiple modes, and ample opportunities to unleash Hadokens on your friends.</p>
+                    <hr>
+                </section>
+                
+                <aside class="more-news">
+                    <h2>More to Explore</h2>
+                    <div class="top-news">
+                        <h3>Top News</h3>
+                        <ul>
+                            <li>
+                                <img src="https://s.yimg.com/ny/api/res/1.2/lonritRnqKsfUp5O14TIlA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/en/deadline.com/3eeaece439ac409e3480284e9be75b76" alt="Stranger Things">
+                                <a href="#">'Stranger Things' Play 'The First Shadow' Getting Netflix Behind-the-Scenes Doc as Broadway Previews Begin
+                                    3/28/2025</a>
+                            </li>
+                            <li>
+                                <img src="https://voz.us/files/article_social_75/uploads/2024/06/17/66707cffd9c82.jpeg" alt="Legend of Zelda">
+                                <a href="#">'Legend of Zelda' Live-Action Movie Lands March 2027 Release</a>
+                            </li>
+                            <li>
+                                <img src="https://m.media-amazon.com/images/M/MV5BZmM1YWU0YmMtY2M5YS00MmYyLTk2Y2QtOGQ2NTRmNmU1OTRlXkEyXkFqcGc@.V1_QL75_UX500_CR0,0,500,281.jpg" alt="Martin Scorsese">
+                                <a href="#">Martin Scorsese Hawaiian Crime Movie With Leonardo DiCaprio, Dwayne Johnson and Emily Blunt Lands at 20th Century</a>
+                            </li>
+                            <li>
+                                <img src="https://m.media-amazon.com/images/M/MV5BZmZhZjRiYWItZWJjYS00YzkzLThjNTUtMzk4YTQyYmQyNDk5XkEyXkFqcGc@.V1_QL75_UX500_CR0,26,500,281.jpg" alt="Steven Yeun">
+                                <a href="#">Steven Yeun Joins Paramount's Untitled Animated Aang 'Avatar' Film (Exclusive)</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <h2>Celebrity News</h2>
+                    <div class="top-news">
+                        <h3>Top News</h3>
+                        <ul>
+                            <li>
+                                <img src="https://static.toiimg.com/thumb/msid-119693635,imgsize-27662,width-400,resizemode-4/119693635.jpg" alt="Anna Lambe">
+                                <a href="#">'True Detective' Actress Anna Lambe Joins Brad Pitt in 'Heart of the Beast' (Exclusive)</a>
+                            </li>
+                            <li>
+                                <img src="https://cdn01.justjared.com/wp-content/uploads/headlines/2023/04/megan-fox-machine-gun-kelly-update.jpg" alt="Megan Fox">
+                                <a href="#">Megan Fox Welcomes Baby With Ex Machine Gun Kelly</a>
+                            </li>
+                            <li>
+                                <img src="https://m.media-amazon.com/images/M/MV5BNjI1YWUyN2EtNTdlNi00MjllLWJhMGQtNWZlNWUwMDU0ZWExXkEyXkFqcGc@.V1_QL75_UX500_CR0,26,500,281.jpg" alt="Stephen Graham">
+                                <a href="#">'Adolescence' Duo Stephen Graham and Hannah Walters on the 'Possibility' of Season 2, 'Overwhelming' Global Response and What's Next for Their Company</a>
+                            </li>
+                            <li>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP8Bglv36j5cmxSi9qW8SrnKbeMqTzozsA1Gg5ek8UIomu8L0MecE6d6RXzTz9078sacI&usqp=CAU" alt="Barbara Alyn Woods">
+                                <a href="#">'One Tree Hill' Star Barbara Alyn Woods Reveals She Dated Jerry Seinfeld: 'Not What You'd Expect'</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <h2>Indie News</h2>
+                    <div class="top-news">
+                        <h3>Top News</h3>
+                        <ul>
+                            <li>
+                                <img src="https://deadline.com/wp-content/uploads/2025/03/Arienne-Mandi-.jpg?w=1024" alt="Arienne Mandi">
+                                <a href="#">'The Night Agent's Arienne Mandi Joins New Luca Elmi Thriller 'Hostage' In Leading Role</a>
+                            </li>
+                            <li>
+                                <img src="https://m.media-amazon.com/images/M/MV5BY2IxOGE5OWQtYmIzMy00NWRhLTk2NGUtNzdhN2Y2NzBiZWUzXkEyXkFqcGc@.V1_QL75_UX188.jpg" alt="King Ivory">
+                                <a href="#">Opioid Action-Thriller 'King Ivory' Lands U.S. Theatrical Release With Saban and Roadside Attractions as Universal Takes Worldwide (Exclusive)</a>
+                            </li>
+                            <li>
+                                <img src="https://m.media-amazon.com/images/M/MV5BNzZhZjhjYmUtOGU2NC00YTY4LTg4MDYtY2QwNTFhM2JiM2RiXkEyXkFqcGc@.V1_QL75_UX500_CR0,0,500,281.jpg" alt="Disney">
+                                <a href="#">Disney's Unending Live-Action Adaptations Ranked, from 'Snow White' to 'Mulan' to 'The Little Mermaid'</a>
+                            </li>
+                            <li>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_HJg4or2UwU3SBCdrlLuMOMvwtv-VXlZTVRk6Rp3Y4-Q6k6MaWRdH43NKYtWj7arQSVk&usqp=CAU" alt="Hamdan Ballal">
+                                <a href="#">Academy Apologizes for Omitting Hamdan Ballal's Name After 600 Academy Members Criticize Its Initial Response to Attack on Filmmaker</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <h2>Movie News</h2>
+                    <div class="top-news">
+                        <h3>Top News</h3>
+                        <ul>
+                            <li>
+                                <img src="https://s.yimg.com/ny/api/res/1.2/lonritRnqKsfUp5O14TIlA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/en/deadline.com/3eeaece439ac409e3480284e9be75b76" alt="Legend of Zelda">
+                                <a href="#">'Legend of Zelda' Live-Action Movie Lands March 2027 Release</a>
+                            </li>
+                            <li>
+                                <img src="https://m.media-amazon.com/images/M/MV5BZmZhZjRiYWItZWJjYS00YzkzLThjNTUtMzk4YTQyYmQyNDk5XkEyXkFqcGc@.V1_QL75_UX500_CR0,26,500,281.jpg" alt="Steven Yeun">
+                                <a href="#">Steven Yeun Joins Paramount's Untitled Animated Aang 'Avatar' Film (Exclusive)</a>
+                            </li>
+                            <li>
+                                <img src="https://m.media-amazon.com/images/M/MV5BZmM1YWU0YmMtY2M5YS00MmYyLTk2Y2QtOGQ2NTRmNmU1OTRlXkEyXkFqcGc@.V1_QL75_UX500_CR0,0,500,281.jpg" alt="Martin Scorsese">
+                                <a href="#">Martin Scorsese Hawaiian Crime Movie With Leonardo DiCaprio, Dwayne Johnson and Emily Blunt Lands at 20th Century</a>
+                            </li>
+                            <li>
+                                <img src="https://m.media-amazon.com/images/M/MV5BNGEyYzdhNTgtZjNiOS00Mjk2LWE4ZjYtZjM3ZDQ2Zjk0MWUyXkEyXkFqcGc@.V1_UY1200_CR90,0,630,1200_AL.jpg" alt="Richard Burton">
+                                <a href="#">'His genius is elusive': Harry Lawtey and Toby Jones on bringing Richard Burton back to the screen</a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </main>
+        </div>
+    </div> 
+    </div>
+
+    <script>
+        // Show/hide sections
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tv-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Genre shows display
+        function showGenreShows(genre) {
+            const genreList = document.getElementById('genre-list');
+            const genreShowsContainer = document.getElementById('genre-shows-container');
+            
+            // Hide genre list
+            genreList.style.display = 'none';
+            
+            // Create back button
+            genreShowsContainer.innerHTML = `
+                <div class="back-to-genres" onclick="backToGenres()">← Back to All Genres</div>
+                <h3>${genre.charAt(0).toUpperCase() + genre.slice(1)} TV Shows</h3>
+                <div class="tv-show-grid" id="${genre}-shows"></div>
+            `;
+            
+            // Get the shows container for this genre
+            const showsContainer = document.getElementById(`${genre}-shows`);
+            
+            // Sample shows for each genre (in a real app, this would come from a database)
+            const genreShows = {
+                'action': [
+                    {title: 'The Mandalorian', year: '2019-', rating: 8.7, image: 'https://m.media-amazon.com/images/M/MV5BZDhlMzY0ZGItZTcyNS00ZTAxLWIyMmYtZGQ2ODg5OWZiYmJkXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_QL75_UY562_CR4,0,380,562_.jpg'},
+                    {title: 'Jack Ryan', year: '2018-2023', rating: 8.1, image: 'https://m.media-amazon.com/images/M/MV5BNDYyNjA0ODUzNl5BMl5BanBnXkFtZTgwMDA2MDQ5NTM@._V1_QL75_UX380_CR0,0,380,562_.jpg'},
+                    {title: 'Reacher', year: '2022-', rating: 8.1, image: 'https://m.media-amazon.com/images/M/MV5BYjVkN2E1YzAtYzFkNy00ZGY3LWE0ZTctYjg0YzQzZDIyZDRmXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_QL75_UY562_CR5,0,380,562_.jpg'}
+                ],
+                'drama': [
+                    {title: 'Succession', year: '2018-2023', rating: 8.8, image: 'https://m.media-amazon.com/images/M/MV5BZDE0ODVlYjktNjJiMC00ODk4LWIwNTktMWRhZmZiOGFhYmYwXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg'},
+                    {title: 'The Crown', year: '2016-2023', rating: 8.6, image: 'https://m.media-amazon.com/images/M/MV5BZTEyNjBjYmYtYWYxYi00MmQyLThlYmItY2I4NzM1Mjg1MWYxXkEyXkFqcGdeQXVyMTU3NDU4MDg2._V1_QL75_UY562_CR6,0,380,562_.jpg'},
+                    {title: 'This Is Us', year: '2016-2022', rating: 8.7, image: 'https://m.media-amazon.com/images/M/MV5BNzY1YzI2MGUtMmVlMS00M2YwLTlmMGUtMWVlMDI5ODQ0Y2IwXkEyXkFqcGdeQXVyOTA3MTM4MTM@._V1_QL75_UX380_CR0,0,380,562_.jpg'}
+                ],
+                'comedy': [
+                    {title: 'Ted Lasso', year: '2020-2023', rating: 8.8, image: 'https://m.media-amazon.com/images/M/MV5BMDVmODUzNmEtMGMxZC00NWUzLTkxMTAtMDM5OTQzMWE0ZDM3XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg'},
+                    {title: 'The Office (US)', year: '2005-2013', rating: 9.0, image: 'https://m.media-amazon.com/images/M/MV5BZjZlZDlkYTktMmU1My00ZDBiLWFlNjEtYTBhNjVhOTM4ZjJjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,0,380,562_.jpg'},
+                    {title: 'Brooklyn Nine-Nine', year: '2013-2021', rating: 8.4, image: 'https://m.media-amazon.com/images/M/MV5BNzVkYWY4NzYtMWFlZi00YzkwLThhZDItZjcxYTU4ZTMzMDZmXkEyXkFqcGdeQXVyODUxOTU0OTg@._V1_QL75_UX380_CR0,0,380,562_.jpg'}
+                ]
+                // Add more genres and shows as needed
+            };
+            
+            // Get shows for this genre or default message
+            const shows = genreShows[genre] || [];
+            
+            if (shows.length > 0) {
+                // Add shows to the container
+                shows.forEach(show => {
+                    showsContainer.innerHTML += `
+                        <div class="tv-show-card">
+                            <img src="${show.image}" alt="${show.title}" class="tv-show-poster">
+                            <div class="tv-show-details">
+                                <div class="tv-show-title">${show.title}</div>
+                                <div class="tv-show-meta">
+                                    <span>${show.year}</span>
+                                    <span class="tv-show-rating"><span class="star-icon">★</span> ${show.rating}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                showsContainer.innerHTML = `<p>No shows found for this genre.</p>`;
+            }
+        }
+        
+        // Back to genres list
+        function backToGenres() {
+            const genreList = document.getElementById('genre-list');
+            const genreShowsContainer = document.getElementById('genre-shows-container');
+            
+            genreList.style.display = 'grid';
+            genreShowsContainer.innerHTML = '';
+        }
+    </script>
+</body>
+</html>

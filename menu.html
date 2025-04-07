@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+    --imdb-yellow: #f5c518;
+    --imdb-dark-blue: #0c2340;
+    --imdb-light-blue: #1a3d6d;
+    --imdb-gray: #e6e6e6;
+    --imdb-dark-gray: #757575;
+    --imdb-black: #000000;
+    --imdb-white: #ffffff;
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Amazon Ember', Arial, sans-serif;
+    background-color: var(--imdb-white);
+    color: var(--imdb-black);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.imdb-header {
+    background-color: var(--imdb-dark-blue);
+    color: var(--imdb-white);
+    padding: 1px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--imdb-yellow);
+    margin-right: 25px;
+    letter-spacing: -1px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 22px;
+    cursor: pointer;
+    margin-right: 15px;
+    color: var(--imdb-white);
+}
+
+.main-nav ul {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav li {
+    margin-right: 20px;
+    position: relative;
+}
+
+.main-nav a {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 300;
+    padding: 8px 0;
+}
+
+.main-nav a:hover {
+    color: var(--imdb-yellow);
+}
+
+.main-nav i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.search-container {
+    flex-grow: 1;
+    margin: 0 30px;
+    position: relative;
+}
+
+.search-form {
+    display: flex;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    background-color: var(--imdb-white);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--imdb-yellow);
+}
+
+.search-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: var(--imdb-yellow);
+    color: var(--imdb-black);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #e6b800;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.watchlist {
+    margin-right: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.watchlist i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.sign-in {
+    background-color: transparent;
+    border: 1px solid var(--imdb-white);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.sign-in:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--imdb-yellow);
+    color: var(--imdb-yellow);
+}
+
+.theme-toggle {
+    margin-left: 20px;
+}
+
+#themeToggleBtn {
+    background: transparent;
+    border: none;
+    color: var(--imdb-white);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#themeToggleBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--imdb-yellow);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--imdb-dark-blue);
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+    
+    .main-nav.active {
+        display: block;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+    }
+    
+    .main-nav li {
+        margin: 0 0 15px 0;
+    }
+    
+    .search-container {
+        order: 3;
+        width: 100%;
+        margin: 15px 0 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .user-actions {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    .watchlist {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header class="imdb-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="#" class="logo" id="homeLink">IMDb</a>
+                <span class="menu-toggle"><i class="fas fa-bars"></i></span>
+            </div>
+            
+            <div class="search-container">
+                <form class="search-form">
+                    <input type="text" placeholder="Search IMDb" class="search-input">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="menu.html" id="menuLink"><i class="fas fa-bars"></i> Menu</a></li>
+                    <li><a href="../main/index.html" id="homeNavLink"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="movies.html"><i class="fas fa-film"></i> Movies</a></li>
+                    <li><a href="tvshow.html"><i class="fas fa-tv"></i> TV Shows</a></li>
+                    <li><a href="#" id="celebsNavLink"><i class="fas fa-star"></i> Celebrities</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-actions">
+                <a href="#" class="watchlist"><i class="fas fa-bookmark"></i> Watchlist</a>
+                <a href="login.html" class="sign-in" id="signInBtn">Sign In</a>
+                <a href="#" class="sign-out" id="signOutBtn" style="display: none;">Sign Out</a>
+                <div class="theme-toggle">
+                    <button id="themeToggleBtn"><i class="fas fa-moon"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <footer class="imdb-footer">
+        <div class="container">
+            <div class="footer-container">
+                
+                <div class="footer-links">
+                    <center>
+                        <h4>Movies</h4>
+                        <ul>
+                            <li><a href="movies.html" class="top-rated-footer-link">Release Calendar</a></li>
+                            <li><a href="movies.html" class="movie-meter-footer-link">Top Rated</a></li>
+                            <li><a href="movies.html">Most Populer</a></li>
+                            <li><a href="movies.html" class="news-footer-link">Coming soon</a></li>
+                            <li><a href="movies.html" class="calendar-footer-link">Box Office</a></li>
+                            <li><a href="movies.html">Showtimes</a></li>
+                            <li><a href="movies.html">NEWS</a></li>
+                            <li><a href="movies.html">Indian Movies</a></li>
+                        </ul>
+                    </center>
+                    
+                </div>
+                
+                <div class="footer-links">
+                    <center>
+                        <h4>TV Shows</h4>
+                        <ul>
+                            <li><a href="tvshow.html">Top Rated TV Shows</a></li>
+                            <li><a href="tvshow.html">Most Popular TV Shows</a></li>
+                            <li><a href="tvshow.html">Browse TV Shows by Genre</a></li>
+                            <li><a href="tvshow.html">TV News</a></li>
+                        </ul>
+                    </center>
+                   
+                </div>
+                
+                <div class="footer-links">
+                    <center>
+                        <h4>Celebrities</h4>
+                    <ul>
+                        <li><a href="#">Born Today</a></li>
+                        <li><a href="#" class="celebs-footer-link">Most Popular Celebs</a></li>
+                        <li><a href="#">Celebrity News</a></li>
+                    </ul>
+                    </center>
+                    
+                </div>
+                
+                <div class="footer-links">
+                    <center>
+                        <h4>IMDb Info</h4>
+                        <ul>
+                            <li><a href="#">About IMDb</a></li>
+                            <li><a href="#">Press Room</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Advertising</a></li>
+                        </ul>
+    
+                    </center>
+                   
+                </div>
+                <center>
+                <div class="footer-links">
+                  
+                    <h4>Award And Event</h4>
+                    <ul>
+                        <li><a href="award&event.html" class="top-rated-footer-link">oscar</a></li>
+                        <li><a href="award&event.html" class="movie-meter-footer-link">SXSW Film Festival</a></li>
+                        <li><a href="award&event.html">Women's Hostry Month</a></li>
+                        <li><a href="award&event.html" class="news-footer-link">Star Metal Award</a></li>
+                        <li><a href="award&event.html" class="calendar-footer-link">Awards Central</a></li>
+                        <li><a href="award&event.html">Festival Central</a></li>
+                        
+                    </ul>
+                
+                </div>
+            </center>
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 1990-2023 by IMDb.com, Inc. | An Amazon Company
+                </div>
+                <div class="footer-links">
+                    <a href="#">Conditions of Use</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Interest-Based Ads</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,609 @@
+/* Responsive Styles */
+
+/* Large Desktops (1400px and up) */
+@media (min-width: 1400px) {
+    .container {
+      max-width: 1320px;
+    }
+    
+    .hero-content h1 {
+      font-size: 60px;
+    }
+    
+    .hero-content p {
+      font-size: 24px;
+    }
+  }
+  
+  /* Standard Desktops (1200px to 1399px) */
+  @media (max-width: 1399px) {
+    .container {
+      max-width: 1140px;
+    }
+    
+    .hero-content h1 {
+      font-size: 52px;
+    }
+    
+    .hero-content p {
+      font-size: 22px;
+    }
+  }
+  
+  /* Small Desktops and Laptops (992px to 1199px) */
+  @media (max-width: 1199px) {
+    .container {
+      max-width: 960px;
+    }
+    
+    .hero-content h1 {
+      font-size: 42px;
+    }
+    
+    .hero-content p {
+      font-size: 20px;
+    }
+    
+    .trending-grid,
+    .coming-soon-grid,
+    .celebrities-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .news-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .search-container {
+      margin: 0 20px;
+    }
+  }
+  
+  /* Tablets and Small Laptops (768px to 991px) */
+  @media (max-width: 991px) {
+    .container {
+      max-width: 720px;
+      padding: 0 15px;
+    }
+    
+    .menu-toggle {
+      display: block;
+    }
+    
+    .main-nav {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background-color: var(--imdb-dark-blue);
+      padding: 20px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      display: none;
+      z-index: 999;
+    }
+    
+    .main-nav.active {
+      display: block;
+    }
+    
+    .main-nav ul {
+      flex-direction: column;
+    }
+    
+    .main-nav li {
+      margin: 0 0 15px 0;
+      width: 100%;
+    }
+    
+    .main-nav a {
+      width: 100%;
+      padding: 10px 0;
+    }
+    
+    .header-container {
+      flex-wrap: wrap;
+    }
+    
+    .search-container {
+      order: 3;
+      width: 100%;
+      margin: 15px 0 0;
+    }
+    
+    .hero-section {
+      height: 450px;
+    }
+    
+    .hero-content h1 {
+      font-size: 36px;
+    }
+    
+    .hero-content p {
+      font-size: 18px;
+    }
+    
+    .trending-grid,
+    .coming-soon-grid {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+    }
+    
+    .celebrities-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .newsletter-container {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .newsletter-content {
+      margin-bottom: 30px;
+      max-width: 100%;
+    }
+    
+    .newsletter-form {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .footer-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+  
+  /* Large Mobile Devices (576px to 767px) */
+  @media (max-width: 767px) {
+    .container {
+      max-width: 540px;
+      padding: 0 10px;
+    }
+    
+    .logo {
+      font-size: 24px;
+      margin-right: 15px;
+    }
+    
+    .user-actions {
+      margin-left: auto;
+    }
+    
+    .watchlist {
+      margin-right: 10px;
+      font-size: 14px;
+    }
+    
+    .sign-in {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+    
+    .hero-section {
+      height: 400px;
+    }
+    
+    .hero-content {
+      padding: 0 20px;
+    }
+    
+    .hero-content h1 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+    
+    .hero-content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .hero-button {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+    
+    .section-title {
+      font-size: 24px;
+    }
+    
+    .trending-grid,
+    .coming-soon-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    
+    .movie-poster,
+    .coming-soon-poster {
+      height: 225px;
+    }
+    
+    .movie-info,
+    .coming-soon-info {
+      padding: 15px;
+    }
+    
+    .movie-title,
+    .coming-soon-title {
+      font-size: 16px;
+    }
+    
+    .news-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .news-image {
+      height: 180px;
+    }
+    
+    .news-title {
+      font-size: 18px;
+    }
+    
+    .celebrities-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+    }
+    
+    .celebrity-image {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .celebrity-name {
+      font-size: 16px;
+    }
+    
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+    }
+    
+    .back-to-top {
+      width: 40px;
+      height: 40px;
+      right: 20px;
+      bottom: 20px;
+    }
+  }
+  
+  /* Small Mobile Devices (575px and below) */
+  @media (max-width: 575px) {
+    .container {
+      padding: 0 10px;
+    }
+    
+    .header-container {
+      padding: 10px 0;
+    }
+    
+    .logo {
+      font-size: 22px;
+      margin-right: 10px;
+    }
+    
+    .search-input {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+    
+    .search-button {
+      padding: 4px 10px;
+      font-size: 14px;
+    }
+    
+    .user-actions {
+      display: flex;
+      align-items: center;
+    }
+    
+    .watchlist {
+      display: none;
+    }
+    
+    .sign-in {
+      padding: 5px 10px;
+      font-size: 13px;
+    }
+    
+    .hero-section {
+      height: 350px;
+    }
+    
+    .hero-content h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    
+    .hero-content p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    
+    .hero-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    
+    .section-title {
+      font-size: 20px;
+    }
+    
+    .view-all {
+      font-size: 14px;
+    }
+    
+    .trending-grid,
+    .coming-soon-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    
+    .movie-poster,
+    .coming-soon-poster {
+      height: 200px;
+    }
+    
+    .movie-info,
+    .coming-soon-info {
+      padding: 10px;
+    }
+    
+    .movie-title,
+    .coming-soon-title {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    
+    .movie-meta,
+    .coming-soon-genres {
+      font-size: 12px;
+    }
+    
+    .rating {
+      padding: 3px 6px;
+      font-size: 12px;
+    }
+    
+    .watch-trailer {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    
+    .news-content {
+      padding: 15px;
+    }
+    
+    .news-date {
+      font-size: 12px;
+    }
+    
+    .news-title {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    .news-excerpt {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    
+    .celebrities-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    
+    .celebrity-image {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 8px;
+    }
+    
+    .celebrity-name {
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+    
+    .celebrity-role {
+      font-size: 12px;
+    }
+    
+    .newsletter-section {
+      padding: 30px 0;
+    }
+    
+    .newsletter-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .newsletter-text {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    
+    .newsletter-input {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+    
+    .newsletter-submit {
+      padding: 0 15px;
+      font-size: 14px;
+    }
+    
+    .modal-content {
+      width: 95%;
+    }
+    
+    .footer-section h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    
+    .footer-section ul li {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .social-icons {
+      gap: 10px;
+    }
+    
+    .social-icon {
+      width: 35px;
+      height: 35px;
+      font-size: 16px;
+    }
+    
+    .qr-code {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .app-store {
+      width: 100px;
+      height: 35px;
+    }
+    
+    .copyright {
+      font-size: 12px;
+    }
+  }
+  
+  /* Extra Small Devices (375px and below) */
+  @media (max-width: 375px) {
+    .logo {
+      font-size: 20px;
+    }
+    
+    .hero-content h1 {
+      font-size: 22px;
+    }
+    
+    .hero-content p {
+      font-size: 13px;
+    }
+    
+    .trending-grid,
+    .coming-soon-grid {
+      grid-template-columns: 1fr;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+    
+    .movie-poster,
+    .coming-soon-poster {
+      height: 350px;
+    }
+    
+    .celebrities-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .newsletter-form {
+      flex-direction: column;
+    }
+    
+    .newsletter-input {
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    
+    .newsletter-submit {
+      border-radius: 4px;
+      width: 100%;
+      padding: 8px 0;
+    }
+  }
+  
+  /* Landscape Mode for Mobile Devices */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+      height: 300px;
+    }
+    
+    .hero-content h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .hero-content p {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    
+    .hero-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    
+    .main-nav.active {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+  }
+  
+  /* Print Styles */
+  @media print {
+    .imdb-header,
+    .newsletter-section,
+    .back-to-top,
+    .imdb-footer,
+    .watch-trailer,
+    .modal {
+      display: none !important;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .hero-section {
+      height: auto;
+      color: black;
+      background: none;
+    }
+    
+    .hero-video-container,
+    .video-overlay {
+      display: none;
+    }
+    
+    .hero-content {
+      position: static;
+      color: black;
+      padding: 20px 0;
+    }
+    
+    .hero-button {
+      display: none;
+    }
+    
+    .trending-grid,
+    .news-grid,
+    .celebrities-grid,
+    .coming-soon-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .movie-card,
+    .news-card,
+    .celebrity-card,
+    .coming-soon-card {
+      break-inside: avoid;
+      page-break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #ddd;
+    }
+  }
